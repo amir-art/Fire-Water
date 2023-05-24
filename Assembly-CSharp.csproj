@@ -43,7 +43,6 @@
   <ItemGroup>
      <Compile Include="Assets\Source\Components\Bonus\CoinBonus.cs" />
      <Compile Include="Assets\Source\Components\Bonus\IBonusCollector.cs" />
-     <Compile Include="Assets\Source\Components\Systems\DeathZone\DeathZone.cs" />
      <Compile Include="Assets\Source\Components\UI\Menu\PauseMenu.cs" />
      <Compile Include="Assets\ExternalSource\2D_Destruction\Scripts\ExplodableAddon.cs" />
      <Compile Include="Assets\ExternalSource\2D_Destruction\Unity-delaunay\Delaunay\EdgeList.cs" />
@@ -74,10 +73,13 @@
      <Compile Include="Assets\ExternalSource\2D_Destruction\Unity-delaunay\geom\Circle.cs" />
      <Compile Include="Assets\Source\Components\Players\Scripts\Player.cs" />
      <Compile Include="Assets\Source\Components\Players\Scripts\FirstPlayer.cs" />
-     <Compile Include="Assets\Source\Components\Gate\Gate_Lever.cs" />
+     <Compile Include="Assets\Source\Components\Gate&amp;Lever\Gate.cs" />
      <Compile Include="Assets\Source\Components\Players\Scripts\SecondPlayer.cs" />
      <Compile Include="Assets\Source\Components\Systems\Game\Game.cs" />
      <Compile Include="Assets\Source\Components\Props\Scripts\DestroyableItem.cs" />
+     <Compile Include="Assets\Source\Components\Gate&amp;Lever\Lever.cs" />
+     <Compile Include="Assets\Source\Components\Systems\DeathZone\Water.cs" />
+     <Compile Include="Assets\Source\Components\Systems\DeathZone\Lava.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

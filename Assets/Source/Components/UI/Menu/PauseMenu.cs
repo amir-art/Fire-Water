@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -8,15 +9,21 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private GameObject PauseMenuWindow;
     [SerializeField] private Button PauseButton;
     [SerializeField] private Button ResumeButton;
-    [SerializeField] private Button MainMenuButton;
-    [SerializeField] private Button RestartLevelButton;
-    //[SerializeField] private Button NextLevelButton;
+    [SerializeField] private List<Button> MainMenuButton;
+    [SerializeField] private List<Button> RestartLevelButton;
+    [SerializeField] private Button NextLevelButton;
     
     private void Start()
     {
-        //NextLevelButton.onClick.AddListener(delegate{NextLevel();});
-        RestartLevelButton.onClick.AddListener(delegate{RestartCurrentLevel();});
-        MainMenuButton.onClick.AddListener(delegate{BackMainMenu();});
+        foreach (Button item in RestartLevelButton)
+        {
+            item.onClick.AddListener(delegate{RestartCurrentLevel();});
+        }
+        foreach (Button item in MainMenuButton)
+        {
+            item.onClick.AddListener(delegate{BackMainMenu();});
+        }
+        NextLevelButton.onClick.AddListener(delegate{NextLevel();});
         ResumeButton.onClick.AddListener(delegate{ClosePauseMenu();});
         PauseButton.onClick.AddListener(delegate{OpenPauseMenu();});
     }

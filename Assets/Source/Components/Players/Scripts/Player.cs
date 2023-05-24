@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     
     [SerializeField] private float _speed;
     [SerializeField] private float _jumpForce;
+    public bool _isWaterProtected;
     
     [SerializeField] private Transform _groundCheck;
     [SerializeField] private float _checkRadius;
@@ -18,7 +19,7 @@ public class Player : MonoBehaviour
     
     [SerializeField] private Transform _spawnPoint;
 
-    [SerializeField] private Animator _animator;
+    [SerializeField] private Game _game;
 
     private Rigidbody2D _rbPlayer;
 
@@ -71,7 +72,7 @@ public class Player : MonoBehaviour
     public void OnDeath()
     {
         StartCoroutine(Death());
-        Game.FinishLevel(false);
+        
     }
 
     private IEnumerator Death()
@@ -81,6 +82,7 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(1f);
         // _damageSound.Stop();
         Destroy(gameObject);
+        _game.FinishLevel(false);
     }
     
     protected bool IsGrounded() => Physics2D.OverlapCircle(_groundCheck.position, _checkRadius, _groundLayer);
