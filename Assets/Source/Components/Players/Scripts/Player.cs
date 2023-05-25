@@ -17,11 +17,10 @@ public class Player : MonoBehaviour
     [SerializeField] private float _checkRadius;
     [SerializeField] private LayerMask _groundLayer;
     
-    [SerializeField] private Transform _spawnPoint;
-
     [SerializeField] private Game _game;
 
     private Rigidbody2D _rbPlayer;
+    private Animator _animator;
 
     protected float _movementX;
     protected bool _facingRight = true;
@@ -30,6 +29,7 @@ public class Player : MonoBehaviour
 
     protected void Start()
     {
+        _animator = gameObject.GetComponent<Animator>();
         _rbPlayer = gameObject.GetComponent<Rigidbody2D>();
         _movementX = 0;
     }
@@ -42,8 +42,8 @@ public class Player : MonoBehaviour
         _rbPlayer.velocity = velocity;
         
         Move();
-        //_animator.SetFloat(_stringSpeedId, _movementX);
-        //_animator.SetFloat(_stringJumpId, velocity.y);
+        _animator.SetFloat(_stringSpeedId, Mathf.Abs(_movementX));
+        _animator.SetFloat(_stringJumpId, velocity.y);
     }
 
     protected virtual void Move(){}
@@ -72,12 +72,11 @@ public class Player : MonoBehaviour
     public void OnDeath()
     {
         StartCoroutine(Death());
-        
     }
 
     private IEnumerator Death()
     {
-        // _animator.SetBool(_stringDeathId,true);
+        _animator.SetBool(_stringDeathId,true);
         // _damageSound.Play();
         yield return new WaitForSeconds(1f);
         // _damageSound.Stop();
@@ -93,5 +92,10 @@ public class Player : MonoBehaviour
         Gizmos.DrawWireSphere(_groundCheck.position, _checkRadius);
 
         Gizmos.color = Color.white;
+    }
+
+    public void SetGameSystem(Game game)
+    {
+        _game = game;
     }
 }
